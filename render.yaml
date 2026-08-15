@@ -1,0 +1,49 @@
+# Ryhavean Userbot — Render Blueprint (free plan)
+# Web service seçilir ki, Render free tier-də HTTP portu açılsın və
+# Uptime Robot /health-ə ping atmaqla xidməti 7/24 ayıq saxlasın.
+services:
+  - type: web
+    name: ryhavean-userbot
+    runtime: python
+    pythonVersion: "3.11"
+    plan: free
+    region: frankfurt
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    healthCheckPath: /health
+    autoDeploy: false
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      # ─── Məcburi / Zorunlu ───
+      - key: API_ID
+        sync: false
+      - key: API_HASH
+        sync: false
+      - key: SESSION_STR
+        sync: false
+      - key: BOT_TOKEN
+        sync: false
+      - key: MONGO_URI
+        sync: false
+      # ─── Standart dəyərlər ───
+      - key: DB_NAME
+        value: ryhavean_userbot
+      - key: STORAGE_BACKEND
+        value: mongo
+      - key: DEFAULT_LANG
+        value: az
+      - key: DEPLOYMENT_PLATFORM
+        value: render
+      - key: USER_PLUGINS_DIR
+        value: user_plugins
+      - key: EXTRA_PLUGINS_DIR
+        value: plugins
+      - key: GROUP
+        value: RyhaveanTeam
+      - key: TEAM_CHANNEL
+        value: RyhaveanTeam
+      - key: CHANNEL
+        value: ryhaveanupdates
+      - key: UPDATE_CHANNEL
+        value: ryhaveanupdates

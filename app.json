@@ -1,0 +1,96 @@
+{
+  "name": "Ryhavean Userbot",
+  "description": "A powerful, highly modular, and clean Pyrogram based Telegram Userbot.",
+  "logo": "https://raw.githubusercontent.com/ryhavean/ryhavean-userbot/main/userbot.jpg",
+  "keywords": [
+    "telegram",
+    "userbot",
+    "pyrogram",
+    "python",
+    "ryhavean"
+  ],
+  "repository": "https://t.me/RyhaveanTeam",
+  "env": {
+    "API_ID": {
+      "description": "Your Telegram API ID from my.telegram.org",
+      "required": true
+    },
+    "API_HASH": {
+      "description": "Your Telegram API Hash from my.telegram.org",
+      "required": true
+    },
+    "SESSION_STR": {
+      "description": "Your Pyrogram String Session",
+      "required": true
+    },
+    "BOT_TOKEN": {
+      "description": "Optional: A Bot Token from @BotFather (used for inline bot features)",
+      "required": false
+    },
+    "AI_API_KEY": {
+      "description": "Optional: AI gateway API key (needed for AI features: .ask and Word Grid vision)",
+      "required": false
+    },
+    "AI_BASE_URL": {
+      "description": "Base URL of your Anthropic-compatible AI gateway (e.g. https://api.example.com). Required alongside AI_API_KEY for the AI features.",
+      "required": false
+    },
+    "AGENT_MODEL": {
+      "description": "Optional: model used by .ask",
+      "value": "claude-opus-4-8",
+      "required": false
+    },
+    "AGENT_VISION_MODEL": {
+      "description": "Optional: vision-capable model used for Word Grid image extraction",
+      "value": "claude-opus-4-8",
+      "required": false
+    },
+    "AGENT_ALLOW_SHELL": {
+      "description": "Optional: let the AI agent run shell commands. Leave false unless you trust every message you .ask about — replied-to text is included in the prompt, so enabling this turns other people's messages into a path to command execution.",
+      "value": "false",
+      "required": false
+    },
+    "GROUP": {
+      "description": "Your support group username (without @)",
+      "value": "RyhaveanTeam",
+      "required": false
+    },
+    "CHANNEL": {
+      "description": "Your updates channel username (without @)",
+      "value": "ryhaveanupdates",
+      "required": false
+    },
+    "YT_DLP_API_KEY": {
+      "description": "Optional: API Key for YT_DLP to download YouTube videos",
+      "required": false
+    },
+    "YT_DLP_BASE_URL": {
+      "description": "Optional: Base URL for YT_DLP API (defaults to https://api.ryhavean.dev)",
+      "value": "https://api.ryhavean.dev",
+      "required": false
+    },
+    "MONGO_URI": {
+      "description": "Optional: MongoDB connection URI for persistent storage (falls back to in-memory storage if unset)",
+      "required": false
+    },
+    "DB_NAME": {
+      "description": "Optional: MongoDB database name",
+      "value": "userbot",
+      "required": false
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-activestorage-preview"
+    }
+  ],
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "eco"
+    }
+  }
+}
